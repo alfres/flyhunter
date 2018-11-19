@@ -4,8 +4,11 @@
 <meta charset="UTF-8">
 <title>FLYHUNTER</title>
 <link rel="icon" href="img/fly.png">
- <style></style>  
-  <script type="text/javascript" src="src/crafty-min.js"></script>
+ <style></style>
+ <script type="text/javascript" src="src/crafty-min.js"></script>
+ <script src="src/core/matter (2).js"></script>
+ <script type="text/javascript" src="src/craftymatter.js"></script>
+  
   <script type="text/javascript" src="src/game.js"></script>
   <script type="text/javascript" src="src/components.js"></script>
   <script type="text/javascript" src="src/scenes.js"></script>
@@ -16,7 +19,7 @@
 <div id='marco'  ></div>
 <button onclick='Crafty.scene("portada")'>restart</button>&nbsp;&nbsp;
 <label id="la2" for="a">alzada</label>
-<input type="range" id="a" value="45" min="0" max="90" onchange='walk()' ondblclick='this.value = 45; walk()'>
+<input type="range" id="a" value="45" min="1" max="90" onchange='walk()' ondblclick='this.value = 45; walk()'>
 <label id="la" for="a">45?</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <label id="lb2" for="b">polvora</label>
 <input type="range" id="b" value="100" min="70" max="130" onchange='power()' ondblclick='this.value = 100; power()'>
