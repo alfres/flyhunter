@@ -52,6 +52,7 @@ length: 0
 				this._body.isStatic = true
 				Matter.World.remove(Crafty.Matter.world, [elastic, elastic2 ]);
 				rock.destroy()
+				this.removeComponent('Matter')
 				Crafty.e("2D, DOM, Color, diana")
 	  .origin("center")
 	  .attr({x: this.x +6, y: this.y +5, w: 6, h: 8})
