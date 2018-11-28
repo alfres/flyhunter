@@ -13,23 +13,7 @@ Crafty.c('fli', {
 			shape : 'circle',
 			isStatic : false
 		}})
-		.bind('UpdateFrame', function(){
-			if(Crafty.audio.isPlaying('flys') == false){
-				this.unbind('UpdateFrame'); 
-				this._body.isStatic = true
-				//Matter.World.remove(Crafty.Matter.world, [this._body, rock._body, elastic, elastic2 ]);
-				
-				Crafty.e("2D, DOM, Color, diana")
-	  .origin("center")
-	  .attr({x: this.x +6, y: this.y +5, w: 6, h: 8})
-	  
-				} 
-		 Body.applyForce(
-    rock._body,
-    { x: rock._body.position.x, y: rock._body.position.y },
-    { x: Crafty.math.randomNumber(-0.002, 0.002), y: Crafty.math.randomNumber(-0.002, 0.002) }
-  )
-		})
+	
 		
 		   var    rockOptions = { density: 0.004 },
         rock = Crafty.e('2D, DOM, Actor, Matter')
@@ -49,7 +33,7 @@ Crafty.c('fli', {
              bodyA: rock._body,
         bodyB: this._body,
         pointB: { x: -10, y: -7 },
-stiffness: 0.2,
+stiffness: 0.1,
 damping: 0.014,
 length: 0
 });
@@ -58,11 +42,29 @@ length: 0
              pointA: { x: mix, y: (miy -180) },
         bodyB: rock._body,
         pointB: { x: -10, y: -7 },
-stiffness: 0.2,
+stiffness: 0.1,
 damping: 0.014,
 length: 0
 });
-
+	this.bind('UpdateFrame', function(){
+			if(Crafty.audio.isPlaying('flys') == false){
+				this.unbind('UpdateFrame'); 
+				this._body.isStatic = true
+				Matter.World.remove(Crafty.Matter.world, [elastic, elastic2 ]);
+				rock.destroy()
+				Crafty.e("2D, DOM, Color, diana")
+	  .origin("center")
+	  .attr({x: this.x +6, y: this.y +5, w: 6, h: 8})
+	  
+				} 
+				this._body.angle =  Crafty.math.randomNumber((this._body.angle -0.01), (this._body.angle +0.01))
+				
+		 Body.applyForce(
+    rock._body,
+    { x: rock._body.position.x, y: rock._body.position.y },
+    { x: Crafty.math.randomNumber(-0.002, 0.002), y: Crafty.math.randomNumber(-0.002, 0.002) }
+  )
+		})
 Matter.World.add(Crafty.Matter.world, [elastic, elastic2 ]);
      Crafty.audio.play("flys", 1); 
 	  
@@ -104,7 +106,7 @@ density: 0.005
          Crafty.audio.play("splat",1,0.6)
 		 fi +=1
 		 f.textContent ='fiambres ' + fi
-         Crafty.e("2D, DOM, sp").attr({x: (hitDatas[0].obj.x), y: hitDatas[0].obj.y, z: 0, w: 32, h: 32 })
+         Crafty.e("2D, DOM, sp").attr({x: (hitDatas[0].obj.x), y: hitDatas[0].obj.y, z: -10000, w: 32, h: 32 })
          hitDatas[0].obj.destroy(); Crafty("fli").each(function(i) { this.destroy() });
 		     Body.applyForce(
     this._body,

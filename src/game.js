@@ -53,6 +53,7 @@ Game = {
  load:function(){
  
   Crafty.init(1000,565, document.getElementById('marco'));
+  Crafty.background('#7FFFD4') 
 Crafty.Matter.init({
 	debug : false,
 	gravity : {
@@ -60,7 +61,7 @@ Crafty.Matter.init({
 		y : 0.9
 	}
 });
-  Crafty.sprite("img/bo.png", {bo:[0,0,48,48]});
+  Crafty.sprite("img/bo2.png", {bo:[0,0,48,48]});
  Crafty.sprite("img/cannon.png", {cannon:[0,0,261,261]});
  Crafty.sprite("img/fly.png", {fly:[0,0,157,149]});
  Crafty.sprite("img/bloodsplats_0004.png", {sp:[0,0,128,128]});
